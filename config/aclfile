@@ -1,0 +1,18 @@
+# /etc/mosquitto/aclfile
+# Configuration des droits d'accès pour le TP MQTT
+
+# Utilisateur sensor_node_1 : lecture/écriture sur son topic uniquement
+user sensor_node_1
+topic readwrite home/sensor1/#
+
+# Utilisateur dashboard : lecture seule sur tous les topics home/
+user dashboard
+topic read home/#
+
+# Utilisateur user1 (administrateur de test)
+user user1
+topic readwrite test/#
+topic read maison/temperature
+
+# Interdire l'accès aux topics $SYS pour les clients non-admin
+topic deny $SYS/#
